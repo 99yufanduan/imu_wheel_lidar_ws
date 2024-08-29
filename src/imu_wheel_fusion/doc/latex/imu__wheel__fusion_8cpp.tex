@@ -1,0 +1,83 @@
+\hypertarget{imu__wheel__fusion_8cpp}{}\doxysection{src/imu\+\_\+wheel\+\_\+fusion.cpp File Reference}
+\label{imu__wheel__fusion_8cpp}\index{src/imu\_wheel\_fusion.cpp@{src/imu\_wheel\_fusion.cpp}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classImuWheelFusion}{Imu\+Wheel\+Fusion}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Eigen\+::\+Quaterniond \mbox{\hyperlink{imu__wheel__fusion_8cpp_a2214317f36a6c192fe7d5c8a67172ff4}{rpy\+To\+Quaternion}} (double roll\+\_\+rad, double pitch\+\_\+rad, double yaw\+\_\+rad)
+\item 
+int \mbox{\hyperlink{imu__wheel__fusion_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const double \mbox{\hyperlink{imu__wheel__fusion_8cpp_abe7aa7157aa2b37f103c2be5a4b3feab}{k\+Gyro\+Noise}} = 1e-\/6
+\item 
+const double \mbox{\hyperlink{imu__wheel__fusion_8cpp_a256d4919c8ce6cdcac9a2021d59e9082}{k\+Acc\+Noise}} = 1e-\/6
+\item 
+const double \mbox{\hyperlink{imu__wheel__fusion_8cpp_a2f2d4554446be5b47c758afac7f7f8f7}{k\+Wheel\+Noise}} = 0.\+01
+\item 
+const double \mbox{\hyperlink{imu__wheel__fusion_8cpp_acf67607e9e6dd5986836b79ce28b80c4}{k\+Epsilon}} = 1e-\/6
+\item 
+const double \mbox{\hyperlink{imu__wheel__fusion_8cpp_ab5c7cdb0e77b79ea3a5538624c86b18f}{kG}} = 9.\+81
+\item 
+const double \mbox{\hyperlink{imu__wheel__fusion_8cpp_ad3c3ed8583ddc367077fd13462753dd4}{k\+DeltaT}} = 0.\+01
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{imu__wheel__fusion_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{imu__wheel__fusion_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}!main@{main}}
+\index{main@{main}!imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{imu__wheel__fusion_8cpp_a2214317f36a6c192fe7d5c8a67172ff4}\label{imu__wheel__fusion_8cpp_a2214317f36a6c192fe7d5c8a67172ff4}} 
+\index{imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}!rpyToQuaternion@{rpyToQuaternion}}
+\index{rpyToQuaternion@{rpyToQuaternion}!imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}}
+\doxysubsubsection{\texorpdfstring{rpyToQuaternion()}{rpyToQuaternion()}}
+{\footnotesize\ttfamily Eigen\+::\+Quaterniond rpy\+To\+Quaternion (\begin{DoxyParamCaption}\item[{double}]{roll\+\_\+rad,  }\item[{double}]{pitch\+\_\+rad,  }\item[{double}]{yaw\+\_\+rad }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{imu__wheel__fusion_8cpp_a256d4919c8ce6cdcac9a2021d59e9082}\label{imu__wheel__fusion_8cpp_a256d4919c8ce6cdcac9a2021d59e9082}} 
+\index{imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}!kAccNoise@{kAccNoise}}
+\index{kAccNoise@{kAccNoise}!imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}}
+\doxysubsubsection{\texorpdfstring{kAccNoise}{kAccNoise}}
+{\footnotesize\ttfamily const double k\+Acc\+Noise = 1e-\/6}
+
+\mbox{\Hypertarget{imu__wheel__fusion_8cpp_ad3c3ed8583ddc367077fd13462753dd4}\label{imu__wheel__fusion_8cpp_ad3c3ed8583ddc367077fd13462753dd4}} 
+\index{imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}!kDeltaT@{kDeltaT}}
+\index{kDeltaT@{kDeltaT}!imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}}
+\doxysubsubsection{\texorpdfstring{kDeltaT}{kDeltaT}}
+{\footnotesize\ttfamily const double k\+DeltaT = 0.\+01}
+
+\mbox{\Hypertarget{imu__wheel__fusion_8cpp_acf67607e9e6dd5986836b79ce28b80c4}\label{imu__wheel__fusion_8cpp_acf67607e9e6dd5986836b79ce28b80c4}} 
+\index{imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}!kEpsilon@{kEpsilon}}
+\index{kEpsilon@{kEpsilon}!imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}}
+\doxysubsubsection{\texorpdfstring{kEpsilon}{kEpsilon}}
+{\footnotesize\ttfamily const double k\+Epsilon = 1e-\/6}
+
+\mbox{\Hypertarget{imu__wheel__fusion_8cpp_ab5c7cdb0e77b79ea3a5538624c86b18f}\label{imu__wheel__fusion_8cpp_ab5c7cdb0e77b79ea3a5538624c86b18f}} 
+\index{imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}!kG@{kG}}
+\index{kG@{kG}!imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}}
+\doxysubsubsection{\texorpdfstring{kG}{kG}}
+{\footnotesize\ttfamily const double kG = 9.\+81}
+
+\mbox{\Hypertarget{imu__wheel__fusion_8cpp_abe7aa7157aa2b37f103c2be5a4b3feab}\label{imu__wheel__fusion_8cpp_abe7aa7157aa2b37f103c2be5a4b3feab}} 
+\index{imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}!kGyroNoise@{kGyroNoise}}
+\index{kGyroNoise@{kGyroNoise}!imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}}
+\doxysubsubsection{\texorpdfstring{kGyroNoise}{kGyroNoise}}
+{\footnotesize\ttfamily const double k\+Gyro\+Noise = 1e-\/6}
+
+\mbox{\Hypertarget{imu__wheel__fusion_8cpp_a2f2d4554446be5b47c758afac7f7f8f7}\label{imu__wheel__fusion_8cpp_a2f2d4554446be5b47c758afac7f7f8f7}} 
+\index{imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}!kWheelNoise@{kWheelNoise}}
+\index{kWheelNoise@{kWheelNoise}!imu\_wheel\_fusion.cpp@{imu\_wheel\_fusion.cpp}}
+\doxysubsubsection{\texorpdfstring{kWheelNoise}{kWheelNoise}}
+{\footnotesize\ttfamily const double k\+Wheel\+Noise = 0.\+01}
+

@@ -47,7 +47,7 @@ const double kDeltaT = 0.01; // 单位 s
  * @author y.f.duan@outlook.com
  * @date      2024/08/29
  */
-class ImuKalmanNode : public rclcpp::Node
+class ImuWheelFusion : public rclcpp::Node
 {
 private:
     rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr imu_sub_;
@@ -142,11 +142,11 @@ private:
     std::deque<sensor_msgs::msg::Imu> imu_queue_;
 
 public:
-    ImuKalmanNode() : Node("my_kalman_node")
+    ImuWheelFusion() : Node("ImuWheelFusion")
     {
-        imu_sub_ = this->create_subscription<sensor_msgs::msg::Imu>("/Imu_data", 10, std::bind(&ImuKalmanNode::imuSubCallback, this, _1));
-        pose_sub_ = this->create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>("/ndt_pose", 10, std::bind(&ImuKalmanNode::poseSubCallback, this, _1));
-        twist_sub_ = this->create_subscription<nav_msgs::msg::Odometry>("/odom", 10, std::bind(&ImuKalmanNode::wheelSubCallback, this, _1));
+        imu_sub_ = this->create_subscription<sensor_msgs::msg::Imu>("/Imu_data", 10, std::bind(&ImuWheelFusion::imuSubCallback, this, _1));
+        pose_sub_ = this->create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>("/ndt_pose", 10, std::bind(&ImuWheelFusion::poseSubCallback, this, _1));
+        twist_sub_ = this->create_subscription<nav_msgs::msg::Odometry>("/odom", 10, std::bind(&ImuWheelFusion::wheelSubCallback, this, _1));
         pose_pub_ = this->create_publisher<geometry_msgs::msg::PoseWithCovarianceStamped>("/ekf_pose_with_covariance", 10);
         odom_baselink_tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
     }
@@ -188,7 +188,7 @@ Eigen::Quaterniond rpyToQuaternion(double roll_rad, double pitch_rad, double yaw
  * @author y.f.duan@outlook.com
  * @date 2024/08/28
  */
-void ImuKalmanNode::imuSubCallback(const sensor_msgs::msg::Imu::UniquePtr imu_in)
+void ImuWheelFusion::imuSubCallback(const sensor_msgs::msg::Imu::UniquePtr imu_in)
 {
     // 将接收到的 IMU 数据推入队列
     imu_queue_.push_back(*imu_in);
@@ -290,7 +290,7 @@ void ImuKalmanNode::imuSubCallback(const sensor_msgs::msg::Imu::UniquePtr imu_in
     }
 }
 
-void ImuKalmanNode::wheelSubCallback(const nav_msgs::msg::Odometry::UniquePtr wheel_in)
+void ImuWheelFusion::wheelSubCallback(const nav_msgs::msg::Odometry::UniquePtr wheel_in)
 {
     vehicle_twist_queue_.push_back(wheel_in->twist);
 }
@@ -315,7 +315,7 @@ void ImuKalmanNode::wheelSubCallback(const nav_msgs::msg::Odometry::UniquePtr wh
  * @author y.f.duan@outlook.com
  * @date 2024/08/29
  */
-void ImuKalmanNode::poseSubCallback(const geometry_msgs::msg::PoseWithCovarianceStamped::UniquePtr pose_in)
+void ImuWheelFusion::poseSubCallback(const geometry_msgs::msg::PoseWithCovarianceStamped::UniquePtr pose_in)
 {
     /*********** pose2eular *************/
     Eigen::Quaterniond quaternion(pose_in->pose.pose.orientation.w, pose_in->pose.pose.orientation.x, pose_in->pose.pose.orientation.y, pose_in->pose.pose.orientation.z); // 四元数 (w, x, y, z)
@@ -435,7 +435,7 @@ void ImuKalmanNode::poseSubCallback(const geometry_msgs::msg::PoseWithCovariance
  * @author y.f.duan@outlook.com
  * @date 2024/08/29
  */
-void ImuKalmanNode::rpyStatePredict(const Eigen::Vector3d &gyro_in) // u_k =gyro.xyz
+void ImuWheelFusion::rpyStatePredict(const Eigen::Vector3d &gyro_in) // u_k =gyro.xyz
 {
     /**** 状态预测 ****/
     rpy_state_ = rpy_state_transition_matrix_ * rpy_state_ + rpy_state_input_matrix_ * gyro_in;
@@ -459,14 +459,17 @@ void ImuKalmanNode::rpyStatePredict(const Eigen::Vector3d &gyro_in) // u_k =gyro
  * @author y.f.duan@outlook.com
  * @date 2024/08/29
  */
-void ImuKalmanNode::rpyStateUpdate(const Eigen::Vector3d &acc_in) // z_k =acc.xyz
+void ImuWheelFusion::rpyStateUpdate(const Eigen::Vector3d &acc_in) // z_k =acc.xyz
 {
-    Eigen::Matrix3d E{
-        {exp(fabs(acc_in.norm() - kG) / 100000) - 1, 0, 0},
-        {0, exp(fabs(acc_in.norm() - kG / 100000)) - 1, 0},
-        {0, 0, exp(fabs(acc_in.norm() - kG / 100000)) - 1}};
+    // 如果IMU做匀速运动，加速度计测量的就是重力（方向）。当然实际上，并不可能做匀速运动，可以当做系统过程噪声处理。(所以只能用于低动态的情况下使用)，当晃动越大越相信角速度的值，接近于静止或匀速就相信加速度计的值
+    Eigen::Matrix3d E{// 系统过程噪声
+                      {exp(fabs(acc_in.norm() - kG) / 100000) - 1, 0, 0},
+                      {0, exp(fabs(acc_in.norm() - kG / 100000)) - 1, 0},
+                      {0, 0, exp(fabs(acc_in.norm() - kG / 100000)) - 1}};
 
-    rpy_state_observation_jacobian_matrix_ << 0, -1 * kG * cos(rpy_state_[1]), 0,
+    rpy_state_observation_jacobian_matrix_
+        << 0,
+        -1 * kG * cos(rpy_state_[1]), 0,
         kG * cos(rpy_state_[1]) * cos(rpy_state_[0]), -1 * kG * sin(rpy_state_[1]) * sin(rpy_state_[0]), 0,
         -1 * kG * cos(rpy_state_[1]) * sin(rpy_state_[0]), -1 * kG * sin(rpy_state_[1]) * cos(rpy_state_[0]), 0; // 观测方程线性化的雅可比矩阵
     Eigen::Matrix3d kalman_gain;
@@ -493,7 +496,7 @@ void ImuKalmanNode::rpyStateUpdate(const Eigen::Vector3d &acc_in) // z_k =acc.xy
  * @author y.f.duan@outlook.com
  * @date 2024/08/29
  */
-void ImuKalmanNode::performEkfEstimation(const Eigen::Vector3d &gyro_in, const Eigen::Vector3d &acc_in) // gyro.xyz
+void ImuWheelFusion::performEkfEstimation(const Eigen::Vector3d &gyro_in, const Eigen::Vector3d &acc_in) // gyro.xyz
 {
     rpyStatePredict(gyro_in);
     rpyStateUpdate(acc_in);
@@ -503,7 +506,7 @@ void ImuKalmanNode::performEkfEstimation(const Eigen::Vector3d &gyro_in, const E
     rpy_state_[2] = std::fmod(rpy_state_[2] + M_PI, 2 * M_PI) - M_PI;
 }
 
-void ImuKalmanNode::positionStatePredict(const Eigen::Vector2d &wheel_in)
+void ImuWheelFusion::positionStatePredict(const Eigen::Vector2d &wheel_in)
 {
     // position_state_input_matrix_ = Eigen::Matrix<double, 3, 2>{
     //     {kDeltaT * 5 * cos(rpy_state_[2]), 0},
@@ -531,7 +534,7 @@ void ImuKalmanNode::positionStatePredict(const Eigen::Vector2d &wheel_in)
  * @author y.f.duan@outlook.com
  * @date      2024/08/26
  */
-geometry_msgs::msg::TwistWithCovarianceStamped ImuKalmanNode::concatGyroAndOdometer(
+geometry_msgs::msg::TwistWithCovarianceStamped ImuWheelFusion::concatGyroAndOdometer(
     const std::deque<geometry_msgs::msg::TwistWithCovariance> &vehicle_twist_queue,
     const std::deque<sensor_msgs::msg::Imu> &gyro_queue)
 {
@@ -612,7 +615,7 @@ int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
     RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node Ready.");
-    rclcpp::spin(std::make_shared<ImuKalmanNode>());
+    rclcpp::spin(std::make_shared<ImuWheelFusion>());
     rclcpp::shutdown();
     return 0;
 }

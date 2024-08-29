@@ -1,0 +1,242 @@
+\hypertarget{util__func_8cpp}{}\doxysection{src/util\+\_\+func.cpp File Reference}
+\label{util__func_8cpp}\index{src/util\_func.cpp@{src/util\_func.cpp}}
+{\ttfamily \#include \char`\"{}util\+\_\+func.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}matrix\+\_\+type.\+hpp\char`\"{}}\newline
+Include dependency graph for util\+\_\+func.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{util__func_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+\_\+msgs\+::msg\+::\+Color\+RGBA \mbox{\hyperlink{util__func_8cpp_a0aa428046f63a744059e032494301437}{exchange\+\_\+color\+\_\+crc}} (double x)
+\item 
+double \mbox{\hyperlink{util__func_8cpp_ad15a633ff47e1040f903455ff59af5f5}{calc\+\_\+diff\+\_\+for\+\_\+radian}} (const double lhs\+\_\+rad, const double rhs\+\_\+rad)
+\item 
+Eigen\+::\+Map$<$ const Row\+Matrix\+Xd $>$ \mbox{\hyperlink{util__func_8cpp_a242fefb5c8afad08cd1a24ebb4e9b400}{make\+Eigen\+Covariance}} (const std\+::array$<$ double, 36 $>$ \&covariance)
+\item 
+geometry\+\_\+msgs\+::msg\+::\+Vector3 \mbox{\hyperlink{util__func_8cpp_adc47e13ddb029c12c40aabf8ccde7950}{get\+\_\+rpy}} (const geometry\+\_\+msgs\+::msg\+::\+Pose \&pose)
+\item 
+geometry\+\_\+msgs\+::msg\+::\+Vector3 \mbox{\hyperlink{util__func_8cpp_a1a2ad9d6f78c4007d2595edd0f902cd5}{get\+\_\+rpy}} (const geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped \&pose)
+\item 
+geometry\+\_\+msgs\+::msg\+::\+Vector3 \mbox{\hyperlink{util__func_8cpp_a3394183029d14b200a691e5ac1d3e072}{get\+\_\+rpy}} (const geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped \&pose)
+\item 
+geometry\+\_\+msgs\+::msg\+::\+Twist \mbox{\hyperlink{util__func_8cpp_a0831b3ea566602730e549270987bd26f}{calc\+\_\+twist}} (const geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped \&pose\+\_\+a, const geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped \&pose\+\_\+b)
+\item 
+void \mbox{\hyperlink{util__func_8cpp_a8fc21f76e5c50ac11c97018d9c561b84}{get\+\_\+nearest\+\_\+timestamp\+\_\+pose}} (const std\+::deque$<$ geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped\+::\+Const\+Shared\+Ptr $>$ \&pose\+\_\+cov\+\_\+msg\+\_\+ptr\+\_\+array, const rclcpp\+::\+Time \&time\+\_\+stamp, geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped\+::\+Shared\+Ptr \&output\+\_\+old\+\_\+pose\+\_\+cov\+\_\+msg\+\_\+ptr, geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped\+::\+Shared\+Ptr \&output\+\_\+new\+\_\+pose\+\_\+cov\+\_\+msg\+\_\+ptr)
+\item 
+geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped \mbox{\hyperlink{util__func_8cpp_a39618179bc1423ad1e9b5933682741cd}{interpolate\+\_\+pose}} (const geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped \&pose\+\_\+a, const geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped \&pose\+\_\+b, const rclcpp\+::\+Time \&time\+\_\+stamp)
+\item 
+geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped \mbox{\hyperlink{util__func_8cpp_a0c5b0088eb51d948680685f4eac7ebe5}{interpolate\+\_\+pose}} (const geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped \&pose\+\_\+a, const geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped \&pose\+\_\+b, const rclcpp\+::\+Time \&time\+\_\+stamp)
+\item 
+void \mbox{\hyperlink{util__func_8cpp_af99133dd4022c7d97c5090745349fbcd}{pop\+\_\+old\+\_\+pose}} (std\+::deque$<$ geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped\+::\+Const\+Shared\+Ptr $>$ \&pose\+\_\+cov\+\_\+msg\+\_\+ptr\+\_\+array, const rclcpp\+::\+Time \&time\+\_\+stamp)
+\item 
+Eigen\+::\+Affine3d \mbox{\hyperlink{util__func_8cpp_a281bf045a9c09ec2e5c87c0c49e04793}{pose\+\_\+to\+\_\+affine3d}} (const geometry\+\_\+msgs\+::msg\+::\+Pose \&ros\+\_\+pose)
+\item 
+Eigen\+::\+Matrix4f \mbox{\hyperlink{util__func_8cpp_a0d43bc9d9117a4d734b7da1760daace0}{pose\+\_\+to\+\_\+matrix4f}} (const geometry\+\_\+msgs\+::msg\+::\+Pose \&ros\+\_\+pose)
+\item 
+Eigen\+::\+Vector3d \mbox{\hyperlink{util__func_8cpp_a75a166ee1b71a6230c366dd5fe84c8ab}{point\+\_\+to\+\_\+vector3d}} (const geometry\+\_\+msgs\+::msg\+::\+Point \&ros\+\_\+pos)
+\item 
+geometry\+\_\+msgs\+::msg\+::\+Pose \mbox{\hyperlink{util__func_8cpp_a06acb3dc9deb29cef38167e099703e72}{matrix4f\+\_\+to\+\_\+pose}} (const Eigen\+::\+Matrix4f \&eigen\+\_\+pose\+\_\+matrix)
+\item 
+std\+::vector$<$ geometry\+\_\+msgs\+::msg\+::\+Pose $>$ \mbox{\hyperlink{util__func_8cpp_aeb5d2ddd26bccaac5725f47a75a84b37}{create\+\_\+random\+\_\+pose\+\_\+array}} (const geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped \&base\+\_\+pose\+\_\+with\+\_\+cov, const int particle\+\_\+num)
+\item 
+double \mbox{\hyperlink{util__func_8cpp_a724c7e1022c83c17bda3921b463c08b6}{norm}} (const geometry\+\_\+msgs\+::msg\+::\+Point \&p1, const geometry\+\_\+msgs\+::msg\+::\+Point \&p2)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{util__func_8cpp_ad15a633ff47e1040f903455ff59af5f5}\label{util__func_8cpp_ad15a633ff47e1040f903455ff59af5f5}} 
+\index{util\_func.cpp@{util\_func.cpp}!calc\_diff\_for\_radian@{calc\_diff\_for\_radian}}
+\index{calc\_diff\_for\_radian@{calc\_diff\_for\_radian}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{calc\_diff\_for\_radian()}{calc\_diff\_for\_radian()}}
+{\footnotesize\ttfamily double calc\+\_\+diff\+\_\+for\+\_\+radian (\begin{DoxyParamCaption}\item[{const double}]{lhs\+\_\+rad,  }\item[{const double}]{rhs\+\_\+rad }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util__func_8cpp_ad15a633ff47e1040f903455ff59af5f5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{util__func_8cpp_a0831b3ea566602730e549270987bd26f}\label{util__func_8cpp_a0831b3ea566602730e549270987bd26f}} 
+\index{util\_func.cpp@{util\_func.cpp}!calc\_twist@{calc\_twist}}
+\index{calc\_twist@{calc\_twist}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{calc\_twist()}{calc\_twist()}}
+{\footnotesize\ttfamily geometry\+\_\+msgs\+::msg\+::\+Twist calc\+\_\+twist (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped \&}]{pose\+\_\+a,  }\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped \&}]{pose\+\_\+b }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{util__func_8cpp_a0831b3ea566602730e549270987bd26f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util__func_8cpp_a0831b3ea566602730e549270987bd26f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{util__func_8cpp_aeb5d2ddd26bccaac5725f47a75a84b37}\label{util__func_8cpp_aeb5d2ddd26bccaac5725f47a75a84b37}} 
+\index{util\_func.cpp@{util\_func.cpp}!create\_random\_pose\_array@{create\_random\_pose\_array}}
+\index{create\_random\_pose\_array@{create\_random\_pose\_array}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{create\_random\_pose\_array()}{create\_random\_pose\_array()}}
+{\footnotesize\ttfamily std\+::vector$<$geometry\+\_\+msgs\+::msg\+::\+Pose$>$ create\+\_\+random\+\_\+pose\+\_\+array (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped \&}]{base\+\_\+pose\+\_\+with\+\_\+cov,  }\item[{const int}]{particle\+\_\+num }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{util__func_8cpp_a0aa428046f63a744059e032494301437}\label{util__func_8cpp_a0aa428046f63a744059e032494301437}} 
+\index{util\_func.cpp@{util\_func.cpp}!exchange\_color\_crc@{exchange\_color\_crc}}
+\index{exchange\_color\_crc@{exchange\_color\_crc}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{exchange\_color\_crc()}{exchange\_color\_crc()}}
+{\footnotesize\ttfamily std\+\_\+msgs\+::msg\+::\+Color\+RGBA exchange\+\_\+color\+\_\+crc (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{util__func_8cpp_a8fc21f76e5c50ac11c97018d9c561b84}\label{util__func_8cpp_a8fc21f76e5c50ac11c97018d9c561b84}} 
+\index{util\_func.cpp@{util\_func.cpp}!get\_nearest\_timestamp\_pose@{get\_nearest\_timestamp\_pose}}
+\index{get\_nearest\_timestamp\_pose@{get\_nearest\_timestamp\_pose}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_nearest\_timestamp\_pose()}{get\_nearest\_timestamp\_pose()}}
+{\footnotesize\ttfamily void get\+\_\+nearest\+\_\+timestamp\+\_\+pose (\begin{DoxyParamCaption}\item[{const std\+::deque$<$ geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped\+::\+Const\+Shared\+Ptr $>$ \&}]{pose\+\_\+cov\+\_\+msg\+\_\+ptr\+\_\+array,  }\item[{const rclcpp\+::\+Time \&}]{time\+\_\+stamp,  }\item[{geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped\+::\+Shared\+Ptr \&}]{output\+\_\+old\+\_\+pose\+\_\+cov\+\_\+msg\+\_\+ptr,  }\item[{geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped\+::\+Shared\+Ptr \&}]{output\+\_\+new\+\_\+pose\+\_\+cov\+\_\+msg\+\_\+ptr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{util__func_8cpp_adc47e13ddb029c12c40aabf8ccde7950}\label{util__func_8cpp_adc47e13ddb029c12c40aabf8ccde7950}} 
+\index{util\_func.cpp@{util\_func.cpp}!get\_rpy@{get\_rpy}}
+\index{get\_rpy@{get\_rpy}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_rpy()}{get\_rpy()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily geometry\+\_\+msgs\+::msg\+::\+Vector3 get\+\_\+rpy (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose \&}]{pose }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util__func_8cpp_adc47e13ddb029c12c40aabf8ccde7950_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{util__func_8cpp_a1a2ad9d6f78c4007d2595edd0f902cd5}\label{util__func_8cpp_a1a2ad9d6f78c4007d2595edd0f902cd5}} 
+\index{util\_func.cpp@{util\_func.cpp}!get\_rpy@{get\_rpy}}
+\index{get\_rpy@{get\_rpy}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_rpy()}{get\_rpy()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily geometry\+\_\+msgs\+::msg\+::\+Vector3 get\+\_\+rpy (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped \&}]{pose }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{util__func_8cpp_a1a2ad9d6f78c4007d2595edd0f902cd5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{util__func_8cpp_a3394183029d14b200a691e5ac1d3e072}\label{util__func_8cpp_a3394183029d14b200a691e5ac1d3e072}} 
+\index{util\_func.cpp@{util\_func.cpp}!get\_rpy@{get\_rpy}}
+\index{get\_rpy@{get\_rpy}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_rpy()}{get\_rpy()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily geometry\+\_\+msgs\+::msg\+::\+Vector3 get\+\_\+rpy (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped \&}]{pose }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{util__func_8cpp_a3394183029d14b200a691e5ac1d3e072_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{util__func_8cpp_a39618179bc1423ad1e9b5933682741cd}\label{util__func_8cpp_a39618179bc1423ad1e9b5933682741cd}} 
+\index{util\_func.cpp@{util\_func.cpp}!interpolate\_pose@{interpolate\_pose}}
+\index{interpolate\_pose@{interpolate\_pose}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{interpolate\_pose()}{interpolate\_pose()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped interpolate\+\_\+pose (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped \&}]{pose\+\_\+a,  }\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped \&}]{pose\+\_\+b,  }\item[{const rclcpp\+::\+Time \&}]{time\+\_\+stamp }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util__func_8cpp_a39618179bc1423ad1e9b5933682741cd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{util__func_8cpp_a39618179bc1423ad1e9b5933682741cd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{util__func_8cpp_a0c5b0088eb51d948680685f4eac7ebe5}\label{util__func_8cpp_a0c5b0088eb51d948680685f4eac7ebe5}} 
+\index{util\_func.cpp@{util\_func.cpp}!interpolate\_pose@{interpolate\_pose}}
+\index{interpolate\_pose@{interpolate\_pose}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{interpolate\_pose()}{interpolate\_pose()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily geometry\+\_\+msgs\+::msg\+::\+Pose\+Stamped interpolate\+\_\+pose (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped \&}]{pose\+\_\+a,  }\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped \&}]{pose\+\_\+b,  }\item[{const rclcpp\+::\+Time \&}]{time\+\_\+stamp }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util__func_8cpp_a0c5b0088eb51d948680685f4eac7ebe5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{util__func_8cpp_a242fefb5c8afad08cd1a24ebb4e9b400}\label{util__func_8cpp_a242fefb5c8afad08cd1a24ebb4e9b400}} 
+\index{util\_func.cpp@{util\_func.cpp}!makeEigenCovariance@{makeEigenCovariance}}
+\index{makeEigenCovariance@{makeEigenCovariance}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{makeEigenCovariance()}{makeEigenCovariance()}}
+{\footnotesize\ttfamily Eigen\+::\+Map$<$const Row\+Matrix\+Xd$>$ make\+Eigen\+Covariance (\begin{DoxyParamCaption}\item[{const std\+::array$<$ double, 36 $>$ \&}]{covariance }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{util__func_8cpp_a06acb3dc9deb29cef38167e099703e72}\label{util__func_8cpp_a06acb3dc9deb29cef38167e099703e72}} 
+\index{util\_func.cpp@{util\_func.cpp}!matrix4f\_to\_pose@{matrix4f\_to\_pose}}
+\index{matrix4f\_to\_pose@{matrix4f\_to\_pose}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{matrix4f\_to\_pose()}{matrix4f\_to\_pose()}}
+{\footnotesize\ttfamily geometry\+\_\+msgs\+::msg\+::\+Pose matrix4f\+\_\+to\+\_\+pose (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix4f \&}]{eigen\+\_\+pose\+\_\+matrix }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{util__func_8cpp_a724c7e1022c83c17bda3921b463c08b6}\label{util__func_8cpp_a724c7e1022c83c17bda3921b463c08b6}} 
+\index{util\_func.cpp@{util\_func.cpp}!norm@{norm}}
+\index{norm@{norm}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{norm()}{norm()}}
+{\footnotesize\ttfamily double norm (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Point \&}]{p1,  }\item[{const geometry\+\_\+msgs\+::msg\+::\+Point \&}]{p2 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{util__func_8cpp_a75a166ee1b71a6230c366dd5fe84c8ab}\label{util__func_8cpp_a75a166ee1b71a6230c366dd5fe84c8ab}} 
+\index{util\_func.cpp@{util\_func.cpp}!point\_to\_vector3d@{point\_to\_vector3d}}
+\index{point\_to\_vector3d@{point\_to\_vector3d}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{point\_to\_vector3d()}{point\_to\_vector3d()}}
+{\footnotesize\ttfamily Eigen\+::\+Vector3d point\+\_\+to\+\_\+vector3d (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Point \&}]{ros\+\_\+pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{util__func_8cpp_af99133dd4022c7d97c5090745349fbcd}\label{util__func_8cpp_af99133dd4022c7d97c5090745349fbcd}} 
+\index{util\_func.cpp@{util\_func.cpp}!pop\_old\_pose@{pop\_old\_pose}}
+\index{pop\_old\_pose@{pop\_old\_pose}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{pop\_old\_pose()}{pop\_old\_pose()}}
+{\footnotesize\ttfamily void pop\+\_\+old\+\_\+pose (\begin{DoxyParamCaption}\item[{std\+::deque$<$ geometry\+\_\+msgs\+::msg\+::\+Pose\+With\+Covariance\+Stamped\+::\+Const\+Shared\+Ptr $>$ \&}]{pose\+\_\+cov\+\_\+msg\+\_\+ptr\+\_\+array,  }\item[{const rclcpp\+::\+Time \&}]{time\+\_\+stamp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{util__func_8cpp_a281bf045a9c09ec2e5c87c0c49e04793}\label{util__func_8cpp_a281bf045a9c09ec2e5c87c0c49e04793}} 
+\index{util\_func.cpp@{util\_func.cpp}!pose\_to\_affine3d@{pose\_to\_affine3d}}
+\index{pose\_to\_affine3d@{pose\_to\_affine3d}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{pose\_to\_affine3d()}{pose\_to\_affine3d()}}
+{\footnotesize\ttfamily Eigen\+::\+Affine3d pose\+\_\+to\+\_\+affine3d (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose \&}]{ros\+\_\+pose }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{util__func_8cpp_a281bf045a9c09ec2e5c87c0c49e04793_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{util__func_8cpp_a0d43bc9d9117a4d734b7da1760daace0}\label{util__func_8cpp_a0d43bc9d9117a4d734b7da1760daace0}} 
+\index{util\_func.cpp@{util\_func.cpp}!pose\_to\_matrix4f@{pose\_to\_matrix4f}}
+\index{pose\_to\_matrix4f@{pose\_to\_matrix4f}!util\_func.cpp@{util\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{pose\_to\_matrix4f()}{pose\_to\_matrix4f()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix4f pose\+\_\+to\+\_\+matrix4f (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose \&}]{ros\+\_\+pose }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{util__func_8cpp_a0d43bc9d9117a4d734b7da1760daace0_cgraph}
+\end{center}
+\end{figure}

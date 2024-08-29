@@ -1,0 +1,71 @@
+\hypertarget{imu__kalman__node_8cpp}{}\doxysection{src/imu\+\_\+kalman\+\_\+node.cpp File Reference}
+\label{imu__kalman__node_8cpp}\index{src/imu\_kalman\_node.cpp@{src/imu\_kalman\_node.cpp}}
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include \char`\"{}rclcpp/rclcpp.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}std\+\_\+msgs/msg/string.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}geometry\+\_\+msgs/msg/transform\+\_\+stamped.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}geometry\+\_\+msgs/msg/pose\+\_\+with\+\_\+covariance\+\_\+stamped.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sensor\+\_\+msgs/msg/imu.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tf2/\+Linear\+Math/\+Quaternion.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tf2\+\_\+ros/static\+\_\+transform\+\_\+broadcaster.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tf2\+\_\+ros/transform\+\_\+broadcaster.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tf2\+\_\+ros/transform\+\_\+listener.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tf2\+\_\+ros/buffer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Estimator.\+h\char`\"{}}\newline
+Include dependency graph for imu\+\_\+kalman\+\_\+node.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{imu__kalman__node_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classImuKalmanNode}{Imu\+Kalman\+Node}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{imu__kalman__node_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const double \mbox{\hyperlink{imu__kalman__node_8cpp_a5b2bb9e96c847debf32739af5706d341}{gyro\+\_\+noise}} = 1e-\/6
+\item 
+const double \mbox{\hyperlink{imu__kalman__node_8cpp_a4fbd3d797eedcbeeb7bd2fc1a2d9a5e4}{gyro\+\_\+bias\+\_\+noise}} = 1e-\/8
+\item 
+const double \mbox{\hyperlink{imu__kalman__node_8cpp_a6bf1474ca6d137371038f5707fb9c296}{acc\+\_\+noise}} = 1e-\/6
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{imu__kalman__node_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{imu__kalman__node_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{imu\_kalman\_node.cpp@{imu\_kalman\_node.cpp}!main@{main}}
+\index{main@{main}!imu\_kalman\_node.cpp@{imu\_kalman\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{imu__kalman__node_8cpp_a6bf1474ca6d137371038f5707fb9c296}\label{imu__kalman__node_8cpp_a6bf1474ca6d137371038f5707fb9c296}} 
+\index{imu\_kalman\_node.cpp@{imu\_kalman\_node.cpp}!acc\_noise@{acc\_noise}}
+\index{acc\_noise@{acc\_noise}!imu\_kalman\_node.cpp@{imu\_kalman\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{acc\_noise}{acc\_noise}}
+{\footnotesize\ttfamily const double acc\+\_\+noise = 1e-\/6}
+
+\mbox{\Hypertarget{imu__kalman__node_8cpp_a4fbd3d797eedcbeeb7bd2fc1a2d9a5e4}\label{imu__kalman__node_8cpp_a4fbd3d797eedcbeeb7bd2fc1a2d9a5e4}} 
+\index{imu\_kalman\_node.cpp@{imu\_kalman\_node.cpp}!gyro\_bias\_noise@{gyro\_bias\_noise}}
+\index{gyro\_bias\_noise@{gyro\_bias\_noise}!imu\_kalman\_node.cpp@{imu\_kalman\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{gyro\_bias\_noise}{gyro\_bias\_noise}}
+{\footnotesize\ttfamily const double gyro\+\_\+bias\+\_\+noise = 1e-\/8}
+
+\mbox{\Hypertarget{imu__kalman__node_8cpp_a5b2bb9e96c847debf32739af5706d341}\label{imu__kalman__node_8cpp_a5b2bb9e96c847debf32739af5706d341}} 
+\index{imu\_kalman\_node.cpp@{imu\_kalman\_node.cpp}!gyro\_noise@{gyro\_noise}}
+\index{gyro\_noise@{gyro\_noise}!imu\_kalman\_node.cpp@{imu\_kalman\_node.cpp}}
+\doxysubsubsection{\texorpdfstring{gyro\_noise}{gyro\_noise}}
+{\footnotesize\ttfamily const double gyro\+\_\+noise = 1e-\/6}
+

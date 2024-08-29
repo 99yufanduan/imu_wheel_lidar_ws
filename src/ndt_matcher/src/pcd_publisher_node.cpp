@@ -41,18 +41,9 @@ private:
 
         RCLCPP_INFO(this->get_logger(), "Loaded PCD file: %s with %zu points", pcd_file.c_str(), cloud->points.size());
 
-        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZ>);
-
-        // 创建统计离群点移除滤波器
-        pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor;
-        sor.setInputCloud(cloud);
-        sor.setMeanK(50);            // 设置用于平均距离计算的邻居点数
-        sor.setStddevMulThresh(1.0); // 设置标准差乘数阈值
-        sor.filter(*cloud_filtered);
-
         // 将 PCL 点云转换为 ROS 消息
         sensor_msgs::msg::PointCloud2 output;
-        pcl::toROSMsg(*cloud_filtered, output);
+        pcl::toROSMsg(*cloud, output);
 
         // 设置帧 ID 和时间戳
         output.header.frame_id = "odom";

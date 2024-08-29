@@ -18,9 +18,9 @@ def generate_launch_description():
             output='screen',
         ),
         Node(
-            package='imu_kalman',
-            executable='my_kalman_node',
-            name='my_kalman_node',
+            package='imu_wheel_fusion',
+            executable='imu_wheel_fusion',
+            name='imu_wheel_fusion',
             output='screen',
         ),
         Node(

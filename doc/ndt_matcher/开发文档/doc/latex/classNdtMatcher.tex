@@ -1,0 +1,95 @@
+\hypertarget{classNdtMatcher}{}\doxysection{Ndt\+Matcher Class Reference}
+\label{classNdtMatcher}\index{NdtMatcher@{NdtMatcher}}
+
+
+Inheritance diagram for Ndt\+Matcher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{classNdtMatcher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Ndt\+Matcher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{classNdtMatcher__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNdtMatcher_a4d357efbf818ba7cb860815b50ab326a}{Ndt\+Matcher}} ()
+\item 
+void \mbox{\hyperlink{classNdtMatcher_a8b15eb8b3d8d8a4ed54c70573c9ace44}{update\+\_\+map}} (const std\+::vector$<$ ndt\+\_\+msgs\+::msg\+::\+Point\+Cloud\+Map\+Cell\+With\+ID $>$ \&maps\+\_\+to\+\_\+add, const std\+::vector$<$ std\+::string $>$ \&map\+\_\+ids\+\_\+to\+\_\+remove)
+\begin{DoxyCompactList}\small\item\em update map \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNdtMatcher_a50fe8d65b57a68bc995577fbd9591835}{map\+Load}} (const std\+::string \&map\+\_\+path)
+\begin{DoxyCompactList}\small\item\em map load \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNdtMatcher_adac4660bb579c06cb4aae82f3abe9472}{publish\+\_\+pose}} (const rclcpp\+::\+Time \&sensor\+\_\+ros\+\_\+time, const geometry\+\_\+msgs\+::msg\+::\+Pose \&result\+\_\+pose\+\_\+msg)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classNdtMatcher_a4d357efbf818ba7cb860815b50ab326a}\label{classNdtMatcher_a4d357efbf818ba7cb860815b50ab326a}} 
+\index{NdtMatcher@{NdtMatcher}!NdtMatcher@{NdtMatcher}}
+\index{NdtMatcher@{NdtMatcher}!NdtMatcher@{NdtMatcher}}
+\doxysubsubsection{\texorpdfstring{NdtMatcher()}{NdtMatcher()}}
+{\footnotesize\ttfamily Ndt\+Matcher\+::\+Ndt\+Matcher (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classNdtMatcher_a50fe8d65b57a68bc995577fbd9591835}\label{classNdtMatcher_a50fe8d65b57a68bc995577fbd9591835}} 
+\index{NdtMatcher@{NdtMatcher}!mapLoad@{mapLoad}}
+\index{mapLoad@{mapLoad}!NdtMatcher@{NdtMatcher}}
+\doxysubsubsection{\texorpdfstring{mapLoad()}{mapLoad()}}
+{\footnotesize\ttfamily int Ndt\+Matcher\+::map\+Load (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{map\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+map load 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em const} & std\+::string \&map\+\_\+path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+\href{mailto:y.f.duan@outlook.com}{\texttt{ y.\+f.\+duan@outlook.\+com}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024/08/29 
+\end{DoxyDate}
+\mbox{\Hypertarget{classNdtMatcher_adac4660bb579c06cb4aae82f3abe9472}\label{classNdtMatcher_adac4660bb579c06cb4aae82f3abe9472}} 
+\index{NdtMatcher@{NdtMatcher}!publish\_pose@{publish\_pose}}
+\index{publish\_pose@{publish\_pose}!NdtMatcher@{NdtMatcher}}
+\doxysubsubsection{\texorpdfstring{publish\_pose()}{publish\_pose()}}
+{\footnotesize\ttfamily void Ndt\+Matcher\+::publish\+\_\+pose (\begin{DoxyParamCaption}\item[{const rclcpp\+::\+Time \&}]{sensor\+\_\+ros\+\_\+time,  }\item[{const geometry\+\_\+msgs\+::msg\+::\+Pose \&}]{result\+\_\+pose\+\_\+msg }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classNdtMatcher_a8b15eb8b3d8d8a4ed54c70573c9ace44}\label{classNdtMatcher_a8b15eb8b3d8d8a4ed54c70573c9ace44}} 
+\index{NdtMatcher@{NdtMatcher}!update\_map@{update\_map}}
+\index{update\_map@{update\_map}!NdtMatcher@{NdtMatcher}}
+\doxysubsubsection{\texorpdfstring{update\_map()}{update\_map()}}
+{\footnotesize\ttfamily void Ndt\+Matcher\+::update\+\_\+map (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ ndt\+\_\+msgs\+::msg\+::\+Point\+Cloud\+Map\+Cell\+With\+ID $>$ \&}]{maps\+\_\+to\+\_\+add,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{map\+\_\+ids\+\_\+to\+\_\+remove }\end{DoxyParamCaption})}
+
+
+
+update map 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em } & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{ndt__matcher_8cpp}{ndt\+\_\+matcher.\+cpp}}\end{DoxyCompactItemize}

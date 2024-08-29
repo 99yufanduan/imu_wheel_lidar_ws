@@ -1,0 +1,104 @@
+\hypertarget{classImuWheelFusion}{}\doxysection{Imu\+Wheel\+Fusion Class Reference}
+\label{classImuWheelFusion}\index{ImuWheelFusion@{ImuWheelFusion}}
+
+
+Inheritance diagram for Imu\+Wheel\+Fusion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{classImuWheelFusion__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Imu\+Wheel\+Fusion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{classImuWheelFusion__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classImuWheelFusion_acd42ed601e5f9b9a6e9b36bbd2454aae}{Imu\+Wheel\+Fusion}} ()
+\item 
+void \mbox{\hyperlink{classImuWheelFusion_aeaeb266199e9dec20deeb5fb8564229f}{perform\+Ekf\+Estimation}} (const Eigen\+::\+Vector3d \&gyro\+\_\+in, const Eigen\+::\+Vector3d \&acc\+\_\+in)
+\begin{DoxyCompactList}\small\item\em rpy EKF preform \end{DoxyCompactList}\item 
+geometry\+\_\+msgs\+::msg\+::\+Twist\+With\+Covariance\+Stamped \mbox{\hyperlink{classImuWheelFusion_a5e12af8a1b1b405e5a802a7dcc8076a1}{concat\+Gyro\+And\+Odometer}} (const std\+::deque$<$ geometry\+\_\+msgs\+::msg\+::\+Twist\+With\+Covariance $>$ \&vehicle\+\_\+twist\+\_\+queue, const std\+::deque$<$ sensor\+\_\+msgs\+::msg\+::\+Imu $>$ \&gyro\+\_\+queue)
+\begin{DoxyCompactList}\small\item\em 融合车辆里程计和 IMU（gyro）的数据生成更准确的twist，gyro得到角速度，wheel得到线速度,通过加权平均 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classImuWheelFusion_acd42ed601e5f9b9a6e9b36bbd2454aae}\label{classImuWheelFusion_acd42ed601e5f9b9a6e9b36bbd2454aae}} 
+\index{ImuWheelFusion@{ImuWheelFusion}!ImuWheelFusion@{ImuWheelFusion}}
+\index{ImuWheelFusion@{ImuWheelFusion}!ImuWheelFusion@{ImuWheelFusion}}
+\doxysubsubsection{\texorpdfstring{ImuWheelFusion()}{ImuWheelFusion()}}
+{\footnotesize\ttfamily Imu\+Wheel\+Fusion\+::\+Imu\+Wheel\+Fusion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classImuWheelFusion_a5e12af8a1b1b405e5a802a7dcc8076a1}\label{classImuWheelFusion_a5e12af8a1b1b405e5a802a7dcc8076a1}} 
+\index{ImuWheelFusion@{ImuWheelFusion}!concatGyroAndOdometer@{concatGyroAndOdometer}}
+\index{concatGyroAndOdometer@{concatGyroAndOdometer}!ImuWheelFusion@{ImuWheelFusion}}
+\doxysubsubsection{\texorpdfstring{concatGyroAndOdometer()}{concatGyroAndOdometer()}}
+{\footnotesize\ttfamily geometry\+\_\+msgs\+::msg\+::\+Twist\+With\+Covariance\+Stamped Imu\+Wheel\+Fusion\+::concat\+Gyro\+And\+Odometer (\begin{DoxyParamCaption}\item[{const std\+::deque$<$ geometry\+\_\+msgs\+::msg\+::\+Twist\+With\+Covariance $>$ \&}]{vehicle\+\_\+twist\+\_\+queue,  }\item[{const std\+::deque$<$ sensor\+\_\+msgs\+::msg\+::\+Imu $>$ \&}]{gyro\+\_\+queue }\end{DoxyParamCaption})}
+
+
+
+融合车辆里程计和 IMU（gyro）的数据生成更准确的twist，gyro得到角速度，wheel得到线速度,通过加权平均 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em vehicle\+\_\+twist\+\_\+queue} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em gyro\+\_\+queue} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em twist\+\_\+with\+\_\+cov} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000003}{Todo}}]由于轮速计没有协方差，暂时使用固定值 
+
+只用了imu的时间戳\end{DoxyRefDesc}
+
+
+\begin{DoxyAuthor}{Author}
+\href{mailto:y.f.duan@outlook.com}{\texttt{ y.\+f.\+duan@outlook.\+com}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024/08/26 
+\end{DoxyDate}
+\mbox{\Hypertarget{classImuWheelFusion_aeaeb266199e9dec20deeb5fb8564229f}\label{classImuWheelFusion_aeaeb266199e9dec20deeb5fb8564229f}} 
+\index{ImuWheelFusion@{ImuWheelFusion}!performEkfEstimation@{performEkfEstimation}}
+\index{performEkfEstimation@{performEkfEstimation}!ImuWheelFusion@{ImuWheelFusion}}
+\doxysubsubsection{\texorpdfstring{performEkfEstimation()}{performEkfEstimation()}}
+{\footnotesize\ttfamily void Imu\+Wheel\+Fusion\+::perform\+Ekf\+Estimation (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector3d \&}]{gyro\+\_\+in,  }\item[{const Eigen\+::\+Vector3d \&}]{acc\+\_\+in }\end{DoxyParamCaption})}
+
+
+
+rpy EKF preform 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em acc\+\_\+in} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em gyro\+\_\+in} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em rpy\+\_\+state\+\_\+} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+\href{mailto:y.f.duan@outlook.com}{\texttt{ y.\+f.\+duan@outlook.\+com}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024/08/29 
+\end{DoxyDate}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{imu__wheel__fusion_8cpp}{imu\+\_\+wheel\+\_\+fusion.\+cpp}}\end{DoxyCompactItemize}
