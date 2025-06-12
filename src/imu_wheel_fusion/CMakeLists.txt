@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(imu_wheel_fusion)
-set(CMAKE_BUILD_TYPE "Release")
-# set(CMAKE_BUILD_TYPE "Debug")
+# set(CMAKE_BUILD_TYPE "Release")
+set(CMAKE_BUILD_TYPE "Debug")
 set(CMAKE_CXX_FLAGS "-std=c++17")
 add_compile_options(-Wall -Wextra -Wpedantic) #-Wall：启用大多数的常规编译警告。-Wextra：启用一些额外的警告（在启用 -Wall 的基础上）。-Wpedantic：启用严格的 ISO C 和 ISO C++ 标准兼容性警告。
 #common variables 
@@ -14,8 +14,11 @@ add_compile_options(-Wall -Wextra -Wpedantic) #-Wall：启用大多数的常规�
 #LIBRARY_OUTPUT_PATH 生成的库文件放置的路径
 #使用ENV{NAME}指令就可以调用系统的环境变量了。比如：MESSAGE(STATUS “HOME dir: ENV{HOME}”)
 
-# find dependencies
+# gprof
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
+#set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
 
+# find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(tf2 REQUIRED)

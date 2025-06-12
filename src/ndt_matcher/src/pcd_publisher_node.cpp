@@ -14,7 +14,7 @@ public:
         : Node("pcd_publisher")
     {
         // 声明参数，允许用户通过命令行或配置文件传递参数
-        this->declare_parameter<std::string>("pcd_file", "/home/dyf/rosbag_0827_imu_wheel_vanjee_南风楼/map.pcd");
+        this->declare_parameter<std::string>("pcd_file", "/home/dyf/project/rosbag/rosbag2_2024_09_19-17_24_25_dynamic_obstacle/map.pcd");
 
         // 读取参数
         this->get_parameter("pcd_file", pcd_file_);

@@ -1,12 +1,15 @@
 cmake_minimum_required(VERSION 3.8)
 project(ndt_matcher)
 
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pg")
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
-set(CMAKE_BUILD_TYPE "Release")
+set(CMAKE_BUILD_TYPE "Debug")
 # set(CMAKE_BUILD_TYPE "Debug")
 set(CMAKE_CXX_FLAGS "-std=c++17")
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON) #coc-clangd 或其他 C/C++ 语言服务器可以直接读取该文件
+
+# gprof
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg") 
+# set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
 
 add_compile_options(-Wall -Wextra -Wpedantic) #-Wall：启用大多数的常规编译警告。-Wextra：启用一些额外的警告（在启用 -Wall 的基础上）。-Wpedantic：启用严格的 ISO C 和 ISO C++ 标准兼容性警告。
 #common variables 
@@ -63,6 +66,23 @@ ament_target_dependencies(pcd_publisher_node rclcpp sensor_msgs pcl_conversions)
 add_executable(pcdmap_transform src/pcdmap_transform.cpp)
 target_link_libraries(pcdmap_transform ${PCL_LIBRARIES})
 
+
+# add_executable(perspective_pointcloud src/perspective_pointcloud.cpp)
+# target_link_libraries(perspective_pointcloud ${PCL_LIBRARIES})
+# ament_target_dependencies(perspective_pointcloud 
+# geometry_msgs
+# nav_msgs  
+# sensor_msgs 
+# tf2 
+# tf2_ros 
+# rclcpp 
+# pcl_ros 
+# tf2_eigen 
+# tf2_sensor_msgs
+# pcl_conversions
+# ) #链接ros2库
+
+
 install(TARGETS
   ndt_matcher
   DESTINATION lib/${PROJECT_NAME})
@@ -74,6 +94,10 @@ install(TARGETS
 install(TARGETS
   pcdmap_transform
   DESTINATION lib/${PROJECT_NAME})
+
+# install(TARGETS
+#   perspective_pointcloud
+#   DESTINATION lib/${PROJECT_NAME})
 
 install(
   DIRECTORY launch/

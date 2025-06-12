@@ -19,6 +19,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 #include "geometry_msgs/msg/pose_with_covariance_stamped.hpp"
+#include "geometry_msgs/msg/pose_stamped.hpp"
 #include "geometry_msgs/msg/transform_stamped.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "geometry_msgs/msg/twist_with_covariance_stamped.hpp"
@@ -55,14 +56,19 @@ private:
     rclcpp::Subscription<geometry_msgs::msg::PoseWithCovarianceStamped>::SharedPtr pose_sub_;
     rclcpp::Publisher<geometry_msgs::msg::PoseWithCovarianceStamped>::SharedPtr pose_pub_;
     std::unique_ptr<tf2_ros::TransformBroadcaster> odom_baselink_tf_broadcaster_;
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr manual_init_pose_subscriber_;
 
     void imuSubCallback(const sensor_msgs::msg::Imu::UniquePtr imu_in);
     void wheelSubCallback(const nav_msgs::msg::Odometry::UniquePtr wheel_in);
     void poseSubCallback(const geometry_msgs::msg::PoseWithCovarianceStamped::UniquePtr pose_in);
+
+    void manual_init_pose_callback(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
     void publishPose();
     void rpyStatePredict(const Eigen::Vector3d &gyro_in);
     void rpyStateUpdate(const Eigen::Vector3d &acc_in);
     void positionStatePredict(const Eigen::Vector2d &wheel_in);
+
+    geometry_msgs::msg::PoseStamped manual_init_pose_;
 
     /**********************(rpy EKF)*********************/
     // Roll, Pitch, Yaw (RPY) state vector
@@ -149,6 +155,9 @@ public:
         twist_sub_ = this->create_subscription<nav_msgs::msg::Odometry>("/odom", 10, std::bind(&ImuWheelFusion::wheelSubCallback, this, _1));
         pose_pub_ = this->create_publisher<geometry_msgs::msg::PoseWithCovarianceStamped>("/ekf_pose_with_covariance", 10);
         odom_baselink_tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
+
+        manual_init_pose_subscriber_ = this->create_subscription<geometry_msgs::msg::PoseStamped>(
+            "goal_pose", 2, std::bind(&ImuWheelFusion::manual_init_pose_callback, this, std::placeholders::_1));
     }
     void performEkfEstimation(const Eigen::Vector3d &gyro_in, const Eigen::Vector3d &acc_in);
 
@@ -168,6 +177,24 @@ Eigen::Quaterniond rpyToQuaternion(double roll_rad, double pitch_rad, double yaw
     Eigen::Quaterniond q = yawAngle * pitchAngle * rollAngle;
 
     return q;
+}
+
+/**
+ * @brief 接收rviz发送的初始位姿的回调函数
+ * @author y.f.duan@outlook.com
+ * @date 2024/08/28
+ */
+void ImuWheelFusion::manual_init_pose_callback(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
+{
+    RCLCPP_INFO(this->get_logger(), "Received manual init Pose: [%f, %f, %f]",
+                msg->pose.position.x, msg->pose.position.y, msg->pose.position.z);
+
+    // TODO 2024/09/29 偶现节点挂掉
+    /**** 清空之前的状态 ****/
+    rpy_state_map_.clear();
+    position_state_map_.clear();
+    std::deque<double> empty;
+    std::swap(state_timestamp_queue_, empty);
 }
 
 /**

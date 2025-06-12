@@ -9,7 +9,7 @@ def generate_launch_description():
             name='rviz2',
             # output='screen',
             parameters=[{'use_sim_time': False}],
-            arguments=['-d', 'src/ndt_matcher/config/ndt.rviz']
+            arguments=['-d', 'src/localization/imu_wheel_lidar_localization/src/ndt_matcher/config/config.rviz']
         ),
         Node(
             package='ndt_matcher',
