@@ -3,6 +3,7 @@ project(imu_wheel_fusion)
 # set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_BUILD_TYPE "Debug")
 set(CMAKE_CXX_FLAGS "-std=c++17")
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON) #coc-clangd 或其他 C/C++ 语言服务器可以直接读取该文件
 add_compile_options(-Wall -Wextra -Wpedantic) #-Wall：启用大多数的常规编译警告。-Wextra：启用一些额外的警告（在启用 -Wall 的基础上）。-Wpedantic：启用严格的 ISO C 和 ISO C++ 标准兼容性警告。
 #common variables 
 #CMAKE_CURRENT_SOURCE_DIR 指的是当前处理的 CMakeLists.txt 所在的路径,比如上面我们提到的 src 子目录。
